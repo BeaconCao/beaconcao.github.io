@@ -12,10 +12,12 @@
             box-sizing: border-box;
         }
 
-        /* 页面整体样式 */
+        /* 页面整体样式 - 多巴胺撞色渐变 */
         body {
             font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-            background: linear-gradient(135deg, #ffe6f2 0%, #f8c8e0 100%);
+            background: linear-gradient(120deg, #ff6b6b, #4ecdc4, #ffe066, #ff8a80);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,23 +25,24 @@
             padding: 20px;
         }
 
-        /* 情书卡片样式 */
+        /* 情书卡片样式 - 高对比底色+圆角 */
         .love-card {
-            background-color: white;
+            background-color: #ffffff;
             width: 100%;
             max-width: 600px;
             padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(248, 150, 190, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: 4px solid #000;
         }
 
-        /* 装饰爱心样式 */
+        /* 多巴胺风格装饰元素 */
         .love-card::before {
-            content: "❤️";
-            font-size: 24px;
+            content: "💖";
+            font-size: 32px;
             position: absolute;
             top: 20px;
             left: 20px;
@@ -47,67 +50,95 @@
         }
 
         .love-card::after {
-            content: "❤️";
-            font-size: 24px;
+            content: "✨";
+            font-size: 32px;
             position: absolute;
             bottom: 20px;
             right: 20px;
             animation: float 3s ease-in-out infinite 1s;
         }
 
-        /* 标题样式 */
+        /* 装饰圆点 - 多巴胺风格点缀 */
+        .dot-decoration {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .dot1 { background: #ff6b6b; top: 50px; right: 80px; }
+        .dot2 { background: #4ecdc4; bottom: 80px; left: 60px; }
+        .dot3 { background: #ffe066; top: 120px; left: 40px; }
+        .dot4 { background: #ff8a80; bottom: 100px; right: 70px; }
+
+        /* 标题样式 - 多巴胺撞色 */
         h1 {
-            color: #e63946;
-            font-size: 32px;
+            color: #ff6b6b;
+            font-size: 36px;
             margin-bottom: 20px;
             position: relative;
+            text-shadow: 2px 2px 0 #ffe066;
+            letter-spacing: 2px;
         }
 
         h1::after {
             content: "";
             display: block;
-            width: 80px;
-            height: 3px;
-            background-color: #e63946;
-            margin: 10px auto;
-            border-radius: 3px;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
+            margin: 15px auto;
+            border-radius: 4px;
         }
 
-        /* 正文样式 */
+        /* 正文样式 - 高对比度文字 */
         .message {
-            color: #333;
-            font-size: 18px;
-            line-height: 1.8;
+            color: #2d3436;
+            font-size: 19px;
+            line-height: 1.9;
             margin: 30px 0;
+            position: relative;
+            z-index: 1;
         }
 
-        /* 强调文字样式 */
+        /* 强调文字样式 - 多巴胺主色 */
         .highlight {
-            color: #e63946;
+            color: #ff3864;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 22px;
+            text-shadow: 1px 1px 0 #ffe066;
         }
 
         /* 签名样式 */
         .signature {
             margin-top: 40px;
             text-align: right;
-            color: #666;
+            color: #2d3436;
             font-style: italic;
+            font-size: 18px;
+            position: relative;
+            z-index: 1;
         }
 
         /* 爱心浮动动画 */
         @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(15deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* 背景渐变动画 */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* 动态文字效果 */
         .typing {
             display: inline-block;
             overflow: hidden;
-            border-right: 2px solid #e63946;
+            border-right: 3px solid #ff3864;
             white-space: nowrap;
             animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
         }
@@ -119,51 +150,65 @@
 
         @keyframes blink-caret {
             from, to { border-color: transparent; }
-            50% { border-color: #e63946; }
+            50% { border-color: #ff3864; }
+        }
+
+        /* 鼠标悬浮互动 - 多巴胺风格放大+旋转 */
+        .hover-effect {
+            transition: all 0.4s ease;
+        }
+        .hover-effect:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 45px rgba(255, 107, 107, 0.3);
         }
 
         /* 响应式适配 */
         @media (max-width: 480px) {
             .love-card {
                 padding: 30px 20px;
+                border-width: 3px;
             }
             h1 {
-                font-size: 28px;
+                font-size: 30px;
             }
             .message {
-                font-size: 16px;
+                font-size: 17px;
+            }
+            .highlight {
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="love-card">
+    <div class="love-card hover-effect">
+        <!-- 多巴胺装饰圆点 -->
+        <div class="dot-decoration dot1"></div>
+        <div class="dot-decoration dot2"></div>
+        <div class="dot-decoration dot3"></div>
+        <div class="dot-decoration dot4"></div>
+
         <h1>致我最爱的Candice</h1>
         <p class="message">
             亲爱的Candice，<br><br>
             遇见你是我此生最幸运的事。你的笑容像阳光一样温暖，你的温柔像晚风一样治愈。<br><br>
-            <span class="typing highlight">我爱你，Candice</span>，不止是说说而已。<br><br>
+            我爱你，Candice，不止是说说而已。<br><br>
             愿往后的每一天，都能陪在你身边，看遍世间美好，分享所有欢喜。<br><br>
             你是我藏在心底的温柔，也是我奔赴未来的勇气。
         </p>
         <div class="signature">
-            <p>永远爱你的人 ❤️</p>
+            <p>永远爱你的人 💖</p>
             <p>于每一个想念你的瞬间</p>
         </div>
     </div>
 
     <script>
-        // 页面加载完成后添加轻微的震动效果（增强互动感）
+        // 页面加载完成后触发轻微动画
         window.addEventListener('load', function() {
             const card = document.querySelector('.love-card');
-            // 鼠标悬浮时卡片轻微放大
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
-                this.style.transition = 'transform 0.3s ease';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
+            setTimeout(() => {
+                card.style.opacity = "1";
+            }, 300);
         });
     </script>
 </body>
