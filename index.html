@@ -1,9 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <title>Open Beacon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致Candice的情书</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面整体样式 */
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #ffe6f2 0%, #f8c8e0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 情书卡片样式 */
+        .love-card {
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(248, 150, 190, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 装饰爱心样式 */
+        .love-card::before {
+            content: "❤️";
+            font-size: 24px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .love-card::after {
+            content: "❤️";
+            font-size: 24px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            animation: float 3s ease-in-out infinite 1s;
+        }
+
+        /* 标题样式 */
+        h1 {
+            color: #e63946;
+            font-size: 32px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h1::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #e63946;
+            margin: 10px auto;
+            border-radius: 3px;
+        }
+
+        /* 正文样式 */
+        .message {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 30px 0;
+        }
+
+        /* 强调文字样式 */
+        .highlight {
+            color: #e63946;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* 签名样式 */
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* 爱心浮动动画 */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* 动态文字效果 */
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 2px solid #e63946;
+            white-space: nowrap;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #e63946; }
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 480px) {
+            .love-card {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            .message {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello GitHub Pages! I am beacon</h1>
+    <div class="love-card">
+        <h1>致我最爱的Candice</h1>
+        <p class="message">
+            亲爱的Candice，<br><br>
+            遇见你是我此生最幸运的事。你的笑容像阳光一样温暖，你的温柔像晚风一样治愈。<br><br>
+            <span class="typing highlight">我爱你，Candice</span>，不止是说说而已。<br><br>
+            愿往后的每一天，都能陪在你身边，看遍世间美好，分享所有欢喜。<br><br>
+            你是我藏在心底的温柔，也是我奔赴未来的勇气。
+        </p>
+        <div class="signature">
+            <p>永远爱你的人 ❤️</p>
+            <p>于每一个想念你的瞬间</p>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后添加轻微的震动效果（增强互动感）
+        window.addEventListener('load', function() {
+            const card = document.querySelector('.love-card');
+            // 鼠标悬浮时卡片轻微放大
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
